@@ -1,4 +1,4 @@
-# 💎 Kuyumcu Mücevher Değeri Tahmin Sistemi
+#  Kuyumcu Mücevher Değeri Tahmin Sistemi
 
 > AI destekli profesyonel kuyumcu yönetim platformu
 
@@ -6,7 +6,7 @@
 ![Flask](https://img.shields.io/badge/Flask-2.3+-green)
 ![License](https://img.shields.io/badge/License-MIT-yellow)
 
-## 📸 Proje Hakkında
+##  Proje Hakkında
 
 Yapay zeka destekli kuyumcu yönetim sistemi. Mücevher fotoğrafından otomatik fiyat tahmin et, müşteri yönetimi yap, stok takibi et ve piyasa analizi incele.
 
@@ -14,14 +14,14 @@ Yapay zeka destekli kuyumcu yönetim sistemi. Mücevher fotoğrafından otomatik
 
 ---
 
-## ✨ Özellikler
+##  Özellikler
 
-- ✅ **Fiyat Tahmin** - Mücevher fotoğrafından otomatik fiyat tahmini
-- ✅ **Müşteri CRM** - Müşteri bilgileri ve sipariş takibi
-- ✅ **Stok Yönetimi** - Mücevher envanteri ve uyarıları
-- ✅ **Piyasa Analizi** - Altın/Gümüş fiyat grafiği ve trend analizi
-- ✅ **Sipariş Takibi** - Sipariş durumu ve ödeme takibi
-- ✅ **Responsive Design** - Mobil uyumlu arayüz
+-  **Fiyat Tahmin** - Mücevher fotoğrafından otomatik fiyat tahmini
+-  **Müşteri CRM** - Müşteri bilgileri ve sipariş takibi
+-  **Stok Yönetimi** - Mücevher envanteri ve uyarıları
+-  **Piyasa Analizi** - Altın/Gümüş fiyat grafiği ve trend analizi
+-  **Sipariş Takibi** - Sipariş durumu ve ödeme takibi
+-  **Responsive Design** - Mobil uyumlu arayüz
 
 ---
 
@@ -47,7 +47,7 @@ Yapay zeka destekli kuyumcu yönetim sistemi. Mücevher fotoğrafından otomatik
 
 ---
 
-## 📦 Kurulum
+## Kurulum
 
 ### Gereksinimler
 - Python 3.9+
@@ -89,7 +89,7 @@ python app.py
 **6. Tarayıcıda aç:**
 ---
 
-## 📊 Kullanım
+## Kullanım
 
 ### Ana Sayfa
 - Hızlı istatistikler (Müşteri, Ürün, Sipariş sayısı)
@@ -119,10 +119,10 @@ python app.py
 
 ---
 
-## 🗂️ Proje Yapısı
+## Proje Yapısı
 ---
 
-## 🎯 Geliştirme Planı
+## Geliştirme Planı
 
 - [ ] AI Fiyat Tahmini Modelini Eğit
 - [ ] Fotoğraf İşleme (OpenCV) Entegrasyonu
@@ -134,7 +134,7 @@ python app.py
 
 ---
 
-## 🚀 Gelecek Sürümler
+## Gelecek Sürümler
 
 **v1.1:**
 - ML modeli ile gerçek fiyat tahmini
@@ -148,33 +148,33 @@ python app.py
 
 ---
 
-## 📝 Lisans
+## Lisans
 
 MIT License - Detaylar için [LICENSE](LICENSE) dosyasına bakın
 
 ---
 
-## 👨‍💻 Geliştirici
+## Geliştirici
 
-**Adı Soyadı**  
-📧 Email: senin-email@example.com  
-🔗 LinkedIn: linkedin.com/in/senin-profili  
-🐙 GitHub: github.com/SENIN-KULLANICI-ADI
+**Melisa Sülü**  
+📧 Email: melisasulu111@gmail.com
+ 
+🐙 GitHub: github.com/melisa-sulu
 
 Kuyumculuk Stajı Projesi - 2026  
-Staj Yeri: [Dükkan/İşletme Adı]
+Staj Yeri: GOLD ALI 
 
 ---
 
 ## 📞 İletişim & Destek
 
 Sorularınız için:
-- Issue aç: [GitHub Issues](https://github.com/SENIN-KULLANICI-ADI/kuyumcu-tahmin/issues)
-- Email gönder: senin-email@example.com
+- Issue aç: [GitHub Issues](https://github.com/melisa-sulu/kuyumcu-tahmin/issues)
+- Email gönder: melisasulu111@gmail.com
 
 ---
 
-## 🙏 Teşekkürler
+## Teşekkürler
 
 - Flask dokumentasyonu
 - Bootstrap framework
