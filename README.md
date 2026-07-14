@@ -58,7 +58,7 @@ Yapay zeka destekli kuyumcu yönetim sistemi. Mücevher fotoğrafından otomatik
 
 **1. Repo'yu klonla:**
 ```bash
-git clone https://github.com/SENIN-GITHUB-ADINA/kuyumcu-tahmin.git
+git clone https://github.com/melisa-sulu/kuyumcu-tahmin.git
 cd kuyumcu-tahmin
 ```
 
