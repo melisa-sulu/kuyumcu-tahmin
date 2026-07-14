@@ -157,24 +157,20 @@ MIT License - Detaylar için [LICENSE](LICENSE) dosyasına bakın
 ## Geliştirici
 
 **Melisa Sülü**  
-📧 Email: melisasulu111@gmail.com
+ Email: melisasulu111@gmail.com
  
-🐙 GitHub: github.com/melisa-sulu
+GitHub: github.com/melisa-sulu
 
 Kuyumculuk Stajı Projesi - 2026  
 Staj Yeri: GOLD ALI 
 
 ---
 
-## 📞 İletişim & Destek
 
-Sorularınız için:
-- Issue aç: [GitHub Issues](https://github.com/melisa-sulu/kuyumcu-tahmin/issues)
-- Email gönder: melisasulu111@gmail.com
 
 ---
 
-## Teşekkürler
+
 
 - Flask dokumentasyonu
 - Bootstrap framework
