@@ -1,0 +1,193 @@
+{% extends "base.html" %}
+
+{% block title %}Envanter - Kuyumcu Tahmin{% endblock %}
+
+{% block content %}
+<div class="row mb-4">
+    <div class="col-md-8">
+        <h1>
+            <i class="fas fa-boxes text-success"></i> Envanter Yönetimi
+        </h1>
+        <p class="text-muted">Mücevher ürünlerini yönet ve stok durumunu takip et</p>
+    </div>
+    <div class="col-md-4 text-end">
+        <button class="btn btn-success" data-bs-toggle="modal" data-bs-target="#addProductModal">
+            <i class="fas fa-plus"></i> Ürün Ekle
+        </button>
+    </div>
+</div>
+
+<!-- Toplam Stok Değeri -->
+<div class="row mb-4">
+    <div class="col-md-12">
+        <div class="card bg-info text-white">
+            <div class="card-body">
+                <h5 class="card-title">Toplam Stok Değeri</h5>
+                <h2>{{ total_value|default(0) }} ₺</h2>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Ürünler Tablosu -->
+<div class="row">
+    <div class="col-md-12">
+        <div class="card">
+            <div class="card-body">
+                <table class="table table-hover">
+                    <thead>
+                        <tr>
+                            <th>#</th>
+                            <th>Ürün Adı</th>
+                            <th>Kategori</th>
+                            <th>Malzeme</th>
+                            <th>Ağırlık (gr)</th>
+                            <th>Stok</th>
+                            <th>Satış Fiyatı</th>
+                            <th>Toplam</th>
+                            <th>İşlemler</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% if products %}
+                            {% for product in products %}
+                            <tr>
+                                <td>{{ product.id }}</td>
+                                <td><strong>{{ product.name }}</strong></td>
+                                <td>{{ product.category }}</td>
+                                <td>{{ product.material or '-' }}</td>
+                                <td>{{ product.weight_grams or '-' }}</td>
+                                <td>
+                                    {% if product.stock_quantity < 5 %}
+                                        <span class="badge bg-danger">{{ product.stock_quantity }}</span>
+                                    {% elif product.stock_quantity < 10 %}
+                                        <span class="badge bg-warning">{{ product.stock_quantity }}</span>
+                                    {% else %}
+                                        <span class="badge bg-success">{{ product.stock_quantity }}</span>
+                                    {% endif %}
+                                </td>
+                                <td>{{ product.selling_price|default(0) }} ₺</td>
+                                <td><strong>{{ (product.selling_price|default(0) * product.stock_quantity)|default(0) }} ₺</strong></td>
+                                <td>
+                                    <button class="btn btn-sm btn-info" onclick="editProduct({{ product.id }})">
+                                        <i class="fas fa-edit"></i>
+                                    </button>
+                                    <button class="btn btn-sm btn-danger" onclick="deleteProduct({{ product.id }})">
+                                        <i class="fas fa-trash"></i>
+                                    </button>
+                                </td>
+                            </tr>
+                            {% endfor %}
+                        {% else %}
+                        <tr>
+                            <td colspan="9" class="text-center text-muted">Henüz ürün bulunmamaktadır</td>
+                        </tr>
+                        {% endif %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Add Product Modal -->
+<div class="modal fade" id="addProductModal" tabindex="-1">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Yeni Ürün Ekle</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+            </div>
+            <div class="modal-body">
+                <form id="addProductForm">
+                    <div class="mb-3">
+                        <label for="productName" class="form-label">Ürün Adı</label>
+                        <input type="text" class="form-control" id="productName" name="name" required>
+                    </div>
+                    
+                    <div class="mb-3">
+                        <label for="productCategory" class="form-label">Kategori</label>
+                        <select class="form-select" id="productCategory" name="category" required>
+                            <option value="">-- Seç --</option>
+                            <option value="Halka">Halka</option>
+                            <option value="Bilezik">Bilezik</option>
+                            <option value="Kolye">Kolye</option>
+                            <option value="Küpe">Küpe</option>
+                        </select>
+                    </div>
+                    
+                    <div class="mb-3">
+                        <label for="productMaterial" class="form-label">Malzeme</label>
+                        <input type="text" class="form-control" id="productMaterial" name="material" placeholder="14K Altın">
+                    </div>
+                    
+                    <div class="mb-3">
+                        <label for="productWeight" class="form-label">Ağırlık (gram)</label>
+                        <input type="number" step="0.1" class="form-control" id="productWeight" name="weight_grams">
+                    </div>
+                    
+                    <div class="mb-3">
+                        <label for="productPrice" class="form-label">Satış Fiyatı (₺)</label>
+                        <input type="number" step="0.01" class="form-control" id="productPrice" name="selling_price" required>
+                    </div>
+                    
+                    <div class="mb-3">
+                        <label for="productStock" class="form-label">Stok Miktarı</label>
+                        <input type="number" class="form-control" id="productStock" name="stock_quantity" value="1" required>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">İptal</button>
+                <button type="button" class="btn btn-success" onclick="submitAddProduct()">Ekle</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}
+
+{% block extra_js %}
+<script>
+function submitAddProduct() {
+    const form = document.getElementById('addProductForm');
+    const formData = new FormData(form);
+    const data = Object.fromEntries(formData);
+    
+    // Convert to numbers
+    data.weight_grams = parseFloat(data.weight_grams) || null;
+    data.selling_price = parseFloat(data.selling_price);
+    data.stock_quantity = parseInt(data.stock_quantity);
+    
+    fetch('/add-product', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(data)
+    })
+    .then(response => response.json())
+    .then(data => {
+        if (data.status === 'success') {
+            alert('Ürün başarıyla eklendi!');
+            location.reload();
+        } else {
+            alert('Hata: ' + data.message);
+        }
+    })
+    .catch(error => alert('Bağlantı hatası: ' + error));
+}
+
+function editProduct(id) {
+    alert('Ürün düzenleme özelliği yakında eklenecek');
+    // TODO: Implement edit product
+}
+
+function deleteProduct(id) {
+    if (confirm('Bu ürün silinsin mi?')) {
+        alert('Ürün silme özelliği yakında eklenecek');
+        // TODO: Implement delete product
+    }
+}
+</script>
+{% endblock %}

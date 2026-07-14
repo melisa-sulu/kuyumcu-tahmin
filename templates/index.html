@@ -1,0 +1,83 @@
+{% extends "base.html" %}
+
+{% block title %}Ana Sayfa - Kuyumcu Tahmin{% endblock %}
+
+{% block content %}
+<div class="row mb-4">
+    <div class="col-md-12">
+        <h1>
+            <i class="fas fa-gem text-warning"></i> Hoş Geldiniz!
+        </h1>
+        <p class="text-muted">Kuyumcu Değeri Tahmin Sistemine Hoş Geldiniz</p>
+    </div>
+</div>
+
+<!-- İstatistik Kartları -->
+<div class="row">
+    <div class="col-md-3">
+        <div class="card bg-primary text-white">
+            <div class="card-body">
+                <h5 class="card-title">
+                    <i class="fas fa-users"></i> Toplam Müşteri
+                </h5>
+                <h2>{{ total_customers }}</h2>
+            </div>
+        </div>
+    </div>
+    
+    <div class="col-md-3">
+        <div class="card bg-success text-white">
+            <div class="card-body">
+                <h5 class="card-title">
+                    <i class="fas fa-ring"></i> Mücevher Ürünleri
+                </h5>
+                <h2>{{ total_products }}</h2>
+            </div>
+        </div>
+    </div>
+    
+    <div class="col-md-3">
+        <div class="card bg-info text-white">
+            <div class="card-body">
+                <h5 class="card-title">
+                    <i class="fas fa-shopping-cart"></i> Toplam Siparişler
+                </h5>
+                <h2>{{ total_orders }}</h2>
+            </div>
+        </div>
+    </div>
+    
+    <div class="col-md-3">
+        <div class="card bg-warning text-dark">
+            <div class="card-body">
+                <h5 class="card-title">
+                    <i class="fas fa-calendar-today"></i> Bugün Siparişleri
+                </h5>
+                <h2>{{ today_orders }}</h2>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Hızlı İşlemler -->
+<div class="row mt-5">
+    <div class="col-md-4">
+        <a href="/predict" class="btn btn-lg btn-warning w-100 py-4">
+            <i class="fas fa-wand-magic-sparkles"></i><br>
+            Fiyat Tahmin Et
+        </a>
+    </div>
+    <div class="col-md-4">
+        <a href="/customers" class="btn btn-lg btn-primary w-100 py-4">
+            <i class="fas fa-user-plus"></i><br>
+            Müşteri Ekle
+        </a>
+    </div>
+    <div class="col-md-4">
+        <a href="/inventory" class="btn btn-lg btn-success w-100 py-4">
+            <i class="fas fa-boxes"></i><br>
+            Stoğu Kontrol Et
+        </a>
+    </div>
+</div>
+{% endblock %}

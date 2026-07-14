@@ -1,0 +1,153 @@
+{% extends "base.html" %}
+
+{% block title %}Analiz - Kuyumcu Tahmin{% endblock %}
+
+{% block content %}
+<div class="row mb-4">
+    <div class="col-md-12">
+        <h1>
+            <i class="fas fa-chart-line text-info"></i> Analiz Paneli
+        </h1>
+        <p class="text-muted">Piyasa fiyatları ve satış analizi</p>
+    </div>
+</div>
+
+<!-- Piyasa Fiyatları -->
+<div class="row">
+    <div class="col-md-6">
+        <div class="card">
+            <div class="card-body">
+                <h5 class="card-title">Altın Fiyatları</h5>
+                <div class="alert alert-warning">
+                    <p><strong>Günlük Fiyat (gram):</strong></p>
+                    <h3>680 ₺</h3>
+                    <small class="text-muted">Son güncelleme: Bugün 14:30</small>
+                </div>
+                <p><strong>14K Altın:</strong> 640 ₺/gr</p>
+                <p><strong>18K Altın:</strong> 660 ₺/gr</p>
+                <p><strong>22K Altın:</strong> 680 ₺/gr</p>
+            </div>
+        </div>
+    </div>
+    
+    <div class="col-md-6">
+        <div class="card">
+            <div class="card-body">
+                <h5 class="card-title">Gümüş Fiyatları</h5>
+                <div class="alert alert-secondary">
+                    <p><strong>Günlük Fiyat (gram):</strong></p>
+                    <h3>8.5 ₺</h3>
+                    <small class="text-muted">Son güncelleme: Bugün 14:30</small>
+                </div>
+                <p><strong>Saf Gümüş (925):</strong> 8.5 ₺/gr</p>
+                <p><strong>Gümüş Kaplama:</strong> 2.5 ₺/gr</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Satış İstatistikleri -->
+<div class="row mt-4">
+    <div class="col-md-4">
+        <div class="card">
+            <div class="card-body">
+                <h5 class="card-title">Bu Ay Satışlar</h5>
+                <h3 class="text-success">12.500 ₺</h3>
+                <small class="text-muted">25 ürün satıldı</small>
+            </div>
+        </div>
+    </div>
+    
+    <div class="col-md-4">
+        <div class="card">
+            <div class="card-body">
+                <h5 class="card-title">Ortalama Kar Marjı</h5>
+                <h3 class="text-info">25%</h3>
+                <small class="text-muted">Tüm ürünler</small>
+            </div>
+        </div>
+    </div>
+    
+    <div class="col-md-4">
+        <div class="card">
+            <div class="card-body">
+                <h5 class="card-title">En Çok Satılan</h5>
+                <h3>Altın Halka</h3>
+                <small class="text-muted">8 adet satıldı</small>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Detaylı Grafik Alanı -->
+<div class="row mt-4">
+    <div class="col-md-12">
+        <div class="card">
+            <div class="card-body">
+                <h5 class="card-title">Aylık Satış Trend</h5>
+                <div class="alert alert-info">
+                    <i class="fas fa-chart-bar"></i> Grafikler yakında eklenecek (Chart.js ile)
+                </div>
+                <p class="text-muted">
+                    Satış verilerinizin grafiksel gösterimi burada yer alacak. 
+                    Zaman içinde satışların nasıl değiştiğini görebileceksiniz.
+                </p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Fiyat Karşılaştırması -->
+<div class="row mt-4">
+    <div class="col-md-12">
+        <div class="card">
+            <div class="card-body">
+                <h5 class="card-title">Son 7 Günün Fiyat Değişimi</h5>
+                <table class="table table-sm">
+                    <thead>
+                        <tr>
+                            <th>Tarih</th>
+                            <th>Altın Fiyatı (₺/gr)</th>
+                            <th>Gümüş Fiyatı (₺/gr)</th>
+                            <th>Değişim</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>14 Temmuz 2026</td>
+                            <td>680</td>
+                            <td>8.5</td>
+                            <td><span class="badge bg-success">+1.5%</span></td>
+                        </tr>
+                        <tr>
+                            <td>13 Temmuz 2026</td>
+                            <td>670</td>
+                            <td>8.4</td>
+                            <td><span class="badge bg-danger">-0.8%</span></td>
+                        </tr>
+                        <tr>
+                            <td>12 Temmuz 2026</td>
+                            <td>675</td>
+                            <td>8.5</td>
+                            <td><span class="badge bg-success">+0.5%</span></td>
+                        </tr>
+                        <tr>
+                            <td>11 Temmuz 2026</td>
+                            <td>672</td>
+                            <td>8.4</td>
+                            <td><span class="badge bg-danger">-0.3%</span></td>
+                        </tr>
+                        <tr>
+                            <td>10 Temmuz 2026</td>
+                            <td>674</td>
+                            <td>8.5</td>
+                            <td><span class="badge bg-success">+0.2%</span></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

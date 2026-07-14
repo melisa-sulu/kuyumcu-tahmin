@@ -1,0 +1,148 @@
+{% extends "base.html" %}
+
+{% block title %}Müşteriler - Kuyumcu Tahmin{% endblock %}
+
+{% block content %}
+<div class="row mb-4">
+    <div class="col-md-8">
+        <h1>
+            <i class="fas fa-users text-primary"></i> Müşteri Yönetimi
+        </h1>
+        <p class="text-muted">Müşteri bilgilerini yönet ve takip et</p>
+    </div>
+    <div class="col-md-4 text-end">
+        <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#addCustomerModal">
+            <i class="fas fa-user-plus"></i> Yeni Müşteri Ekle
+        </button>
+    </div>
+</div>
+
+<!-- Müşteriler Tablosu -->
+<div class="row">
+    <div class="col-md-12">
+        <div class="card">
+            <div class="card-body">
+                <table class="table table-hover">
+                    <thead>
+                        <tr>
+                            <th>#</th>
+                            <th>Ad Soyad</th>
+                            <th>Telefon</th>
+                            <th>E-posta</th>
+                            <th>Adres</th>
+                            <th>Eklenme Tarihi</th>
+                            <th>İşlemler</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% if customers %}
+                            {% for customer in customers %}
+                            <tr>
+                                <td>{{ customer.id }}</td>
+                                <td><strong>{{ customer.name }}</strong></td>
+                                <td>{{ customer.phone }}</td>
+                                <td>{{ customer.email or '-' }}</td>
+                                <td>{{ customer.address or '-' }}</td>
+                                <td>{{ customer.created_date.strftime('%d.%m.%Y') }}</td>
+                                <td>
+                                    <button class="btn btn-sm btn-info" onclick="viewCustomer({{ customer.id }})">
+                                        <i class="fas fa-eye"></i>
+                                    </button>
+                                    <button class="btn btn-sm btn-danger" onclick="deleteCustomer({{ customer.id }})">
+                                        <i class="fas fa-trash"></i>
+                                    </button>
+                                </td>
+                            </tr>
+                            {% endfor %}
+                        {% else %}
+                        <tr>
+                            <td colspan="7" class="text-center text-muted">Henüz müşteri bulunmamaktadır</td>
+                        </tr>
+                        {% endif %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Add Customer Modal -->
+<div class="modal fade" id="addCustomerModal" tabindex="-1">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Yeni Müşteri Ekle</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+            </div>
+            <div class="modal-body">
+                <form id="addCustomerForm">
+                    <div class="mb-3">
+                        <label for="name" class="form-label">Ad Soyad</label>
+                        <input type="text" class="form-control" id="name" name="name" required>
+                    </div>
+                    
+                    <div class="mb-3">
+                        <label for="phone" class="form-label">Telefon</label>
+                        <input type="tel" class="form-control" id="phone" name="phone" required>
+                    </div>
+                    
+                    <div class="mb-3">
+                        <label for="email" class="form-label">E-posta</label>
+                        <input type="email" class="form-control" id="email" name="email">
+                    </div>
+                    
+                    <div class="mb-3">
+                        <label for="address" class="form-label">Adres</label>
+                        <textarea class="form-control" id="address" name="address" rows="3"></textarea>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">İptal</button>
+                <button type="button" class="btn btn-primary" onclick="submitAddCustomer()">Ekle</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}
+
+{% block extra_js %}
+<script>
+function submitAddCustomer() {
+    const form = document.getElementById('addCustomerForm');
+    const formData = new FormData(form);
+    const data = Object.fromEntries(formData);
+    
+    fetch('/add-customer', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(data)
+    })
+    .then(response => response.json())
+    .then(data => {
+        if (data.status === 'success') {
+            alert('Müşteri başarıyla eklendi!');
+            location.reload();
+        } else {
+            alert('Hata: ' + data.message);
+        }
+    })
+    .catch(error => alert('Bağlantı hatası: ' + error));
+}
+
+function viewCustomer(id) {
+    alert('Müşteri detayları: ' + id);
+    // TODO: Implement view customer detail
+}
+
+function deleteCustomer(id) {
+    if (confirm('Bu müşteri silinsin mi?')) {
+        alert('Müşteri silme özelliği yakında eklenecek');
+        // TODO: Implement delete customer
+    }
+}
+</script>
+{% endblock %}
