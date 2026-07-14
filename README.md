@@ -25,7 +25,7 @@ Yapay zeka destekli kuyumcu yönetim sistemi. Mücevher fotoğrafından otomatik
 
 ---
 
-## 🛠️ Teknolojiler
+## Teknolojiler
 
 **Backend:**
 - Flask 2.3.3 (Python Web Framework)
